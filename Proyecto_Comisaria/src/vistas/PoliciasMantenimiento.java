@@ -141,6 +141,7 @@ public class PoliciasMantenimiento extends javax.swing.JDialog {
 
         FieldIDPolicia.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
 
+        SliderEdad.setMaximum(67);
         SliderEdad.setMinimum(18);
         SliderEdad.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {

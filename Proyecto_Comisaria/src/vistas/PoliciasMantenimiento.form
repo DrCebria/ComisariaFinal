@@ -233,6 +233,7 @@
     </Component>
     <Component class="javax.swing.JSlider" name="SliderEdad">
       <Properties>
+        <Property name="maximum" type="int" value="67"/>
         <Property name="minimum" type="int" value="18"/>
       </Properties>
       <Events>
