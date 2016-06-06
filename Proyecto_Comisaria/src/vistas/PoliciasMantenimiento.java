@@ -233,13 +233,22 @@ public class PoliciasMantenimiento extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(this, "No se ha podido modificar el policia correctamente.\nError: " + ex, "Error", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            Policia pInsertar = new Policia(Integer.parseInt(FieldIDPolicia.getText()), FieldNombre.getText(), FieldNPlaca.getText(), Integer.parseInt(FieldEdad.getText()), FieldDepartamento.getText(), this.rutaFoto);
+            
+            try{
+                Policia pInsertar = new Policia(Integer.parseInt(FieldIDPolicia.getText()), FieldNombre.getText(), FieldNPlaca.getText(), Integer.parseInt(FieldEdad.getText()), FieldDepartamento.getText(), this.rutaFoto);
+            
+            
+            
             try {
                 if (jd_policias.InsertarPolicias(pInsertar) == 1) {
                     JOptionPane.showMessageDialog(this, "Se ha insertado correctamente el policia.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
                 }
-            } catch (SQLException | java.lang.NumberFormatException ex) {
+            } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "No se ha podido insertar el policia correctamente.\nHay campos vacios o incorrectos.\nError: " + ex, "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            }catch (java.lang.NumberFormatException e){
+                JOptionPane.showMessageDialog(this, "Faltan campos necesarios.", "Error", JOptionPane.ERROR_MESSAGE);
+         
             }
 
             if (FieldNombre.getText().isEmpty()) {
