@@ -3,7 +3,6 @@ package vistas;
 import datos.ArchivosDAO;
 import datos.JDBCDAO;
 import java.io.File;
-import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
 import javax.swing.ImageIcon;
