@@ -21,8 +21,7 @@ public class PoliciasMantenimiento extends javax.swing.JDialog {
     JDBCDAO jd_policias;
     int accion;
     String rutaFoto;
-    
-    
+
     public PoliciasMantenimiento(java.awt.Frame parent, boolean modal, JDBCDAO jd, Policia pSelected) {
         super(parent, modal);
         initComponents();
@@ -45,7 +44,7 @@ public class PoliciasMantenimiento extends javax.swing.JDialog {
             FieldNPlaca.setText(pSelected.getNumPlaca());
 //            FieldEdad.setText(pSelected.getEdad().toString());
             SliderEdad.setValue(pSelected.getEdad());
-            
+
             FieldDepartamento.setText(pSelected.getDepartamento());
         } else {
             FieldIDPolicia.setText(String.valueOf(Integer.parseInt(jd_policias.recogerUltimoPolicia()) + 1));
@@ -249,22 +248,20 @@ public class PoliciasMantenimiento extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(this, "No se ha podido modificar el policia correctamente.\nError: " + ex, "Error", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            
-            try{
-                Policia pInsertar = new Policia(Integer.parseInt(FieldIDPolicia.getText()), FieldNombre.getText(), FieldNPlaca.getText(), SliderEdad.getValue(), FieldDepartamento.getText(), this.rutaFoto);
-            
-            
-            
+
             try {
-                if (jd_policias.InsertarPolicias(pInsertar) == 1) {
-                    JOptionPane.showMessageDialog(this, "Se ha insertado correctamente el policia.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                Policia pInsertar = new Policia(Integer.parseInt(FieldIDPolicia.getText()), FieldNombre.getText(), FieldNPlaca.getText(), SliderEdad.getValue(), FieldDepartamento.getText(), this.rutaFoto);
+
+                try {
+                    if (jd_policias.InsertarPolicias(pInsertar) == 1) {
+                        JOptionPane.showMessageDialog(this, "Se ha insertado correctamente el policia.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(this, "No se ha podido insertar el policia correctamente.\nHay campos vacios o incorrectos.\nError: " + ex, "Error", JOptionPane.ERROR_MESSAGE);
                 }
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(this, "No se ha podido insertar el policia correctamente.\nHay campos vacios o incorrectos.\nError: " + ex, "Error", JOptionPane.ERROR_MESSAGE);
-            }
-            }catch (java.lang.NumberFormatException e){
+            } catch (java.lang.NumberFormatException e) {
                 JOptionPane.showMessageDialog(this, "Faltan campos necesarios.", "Error", JOptionPane.ERROR_MESSAGE);
-         
+
             }
 
             if (FieldNombre.getText().isEmpty()) {
@@ -283,7 +280,9 @@ public class PoliciasMantenimiento extends javax.swing.JDialog {
 
     private void BotonFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonFotoActionPerformed
         // TODO add your handling code here:
-        JFileChooser fc = new JFileChooser("C:\\Users\\Gerard\\Documents\\NetBeansProjects\\Comisaria\\Proyecto_Comisaria");
+        JFileChooser fc = new JFileChooser();
+        File workingDirectory = new File(System.getProperty("user.dir"));
+        fc.setCurrentDirectory(workingDirectory);
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de imagen: ", "png");
         fc.setFileFilter(filter);
         int returnVal = fc.showOpenDialog(this);
