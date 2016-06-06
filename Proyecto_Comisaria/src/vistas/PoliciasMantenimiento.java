@@ -7,7 +7,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import modelo.Policia;
 
@@ -26,6 +30,14 @@ public class PoliciasMantenimiento extends javax.swing.JDialog {
         this.setTitle("Mantenimiento de Policias");
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+
+        //Poner Imagen de fondo en JFrame
+        ((JPanel) getContentPane()).setOpaque(false);
+        ImageIcon MyImgCustom = new ImageIcon(this.getClass().getResource("/imagenes/fondo_policiamantenimiento.png"));
+        JLabel fondo = new JLabel();
+        fondo.setIcon(MyImgCustom);
+        getLayeredPane().add(fondo, JLayeredPane.FRAME_CONTENT_LAYER);
+        fondo.setBounds(0, 0, MyImgCustom.getIconWidth(), MyImgCustom.getIconHeight());
 
         jd_policias = jd;
         if (pSelected != null) {
@@ -70,12 +82,16 @@ public class PoliciasMantenimiento extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Policia ID:");
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Nombre");
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Número Placa");
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("Edad");
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("Departamento");
 
         PanelFoto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -151,7 +167,7 @@ public class PoliciasMantenimiento extends javax.swing.JDialog {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(FieldEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(FieldDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(PanelFoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(BotonFoto, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
@@ -162,7 +178,7 @@ public class PoliciasMantenimiento extends javax.swing.JDialog {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(FieldIDPolicia, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(162, 162, 162))
+                .addGap(130, 130, 130))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,7 +211,7 @@ public class PoliciasMantenimiento extends javax.swing.JDialog {
                             .addComponent(FieldDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addComponent(BotonAplicarCambios)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
@@ -207,6 +223,7 @@ public class PoliciasMantenimiento extends javax.swing.JDialog {
 
     private void BotonAplicarCambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAplicarCambiosActionPerformed
         // TODO add your handling code here:
+
         if (accion == 1) {
             Policia pActualizado = new Policia(Integer.parseInt(FieldIDPolicia.getText()), FieldNombre.getText(), FieldNPlaca.getText(), Integer.parseInt(FieldEdad.getText()), FieldDepartamento.getText(), this.rutaFoto);
             try {
@@ -223,8 +240,20 @@ public class PoliciasMantenimiento extends javax.swing.JDialog {
                 if (jd_policias.InsertarPolicias(pInsertar) == 1) {
                     JOptionPane.showMessageDialog(this, "Se ha insertado correctamente el policia.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
                 }
-            } catch (SQLException | NumberFormatException ex) {
+            } catch (SQLException | java.lang.NumberFormatException ex) {
                 JOptionPane.showMessageDialog(this, "No se ha podido insertar el policia correctamente.\nHay campos vacios o incorrectos.\nError: " + ex, "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+            if (FieldNombre.getText().isEmpty()) {
+                FieldNombre.setBorder(new LineBorder(java.awt.Color.RED));
+            } else {
+                FieldNombre.setBorder(null);
+            }
+
+            if (FieldNPlaca.getText().isEmpty()) {
+                FieldNPlaca.setBorder(new LineBorder(java.awt.Color.RED));
+            } else {
+                FieldNPlaca.setBorder(null);
             }
         }
     }//GEN-LAST:event_BotonAplicarCambiosActionPerformed

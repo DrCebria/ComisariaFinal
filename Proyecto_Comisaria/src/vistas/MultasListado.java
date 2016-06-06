@@ -12,7 +12,11 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import modelo.Multa;
 import modelo.MultaTipo;
@@ -36,7 +40,15 @@ public class MultasListado extends javax.swing.JDialog {
         this.setTitle("Listado de Multas");
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        
+
+        //Poner Imagen de fondo en JFrame
+        ((JPanel) getContentPane()).setOpaque(false);
+        ImageIcon MyImgCustom = new ImageIcon(this.getClass().getResource("/imagenes/fondo_listamultas.png"));
+        JLabel fondo = new JLabel();
+        fondo.setIcon(MyImgCustom);
+        getLayeredPane().add(fondo, JLayeredPane.FRAME_CONTENT_LAYER);
+        fondo.setBounds(0, 0, MyImgCustom.getIconWidth(), MyImgCustom.getIconHeight());
+
         jd_multas = jd;
         DefaultListModel modelo = new DefaultListModel();
         for (Policia p : jd_multas.MostrarPolicias("idPolicia")) {
@@ -130,12 +142,12 @@ public class MultasListado extends javax.swing.JDialog {
                             .addComponent(BotonBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(BotonExportar, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(72, Short.MAX_VALUE)
+                .addContainerGap(45, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(BotonBuscar)

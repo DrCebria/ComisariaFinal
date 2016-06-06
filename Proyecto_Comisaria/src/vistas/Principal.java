@@ -47,7 +47,7 @@ public class Principal extends javax.swing.JFrame {
 
         //Poner Imagen de fondo en JFrame
         ((JPanel) getContentPane()).setOpaque(false);
-        ImageIcon MyImgCustom = new ImageIcon(this.getClass().getResource("/imagenes/fondo_poli.jpg"));
+        ImageIcon MyImgCustom = new ImageIcon(this.getClass().getResource("/imagenes/fondo_principal.png"));
         JLabel fondo = new JLabel();
         fondo.setIcon(MyImgCustom);
         getLayeredPane().add(fondo, JLayeredPane.FRAME_CONTENT_LAYER);
@@ -119,6 +119,9 @@ public class Principal extends javax.swing.JFrame {
         PoliciaTabla = new javax.swing.JTable();
         BotonCargarPolicias = new javax.swing.JButton();
         BotonBorrar = new javax.swing.JButton();
+        textoPolicias = new javax.swing.JLabel();
+        textoListar = new javax.swing.JLabel();
+        textoMultas = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -135,8 +138,12 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        btt_policias.setText("Policias");
+        btt_policias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/policia_icono_grande.png"))); // NOI18N
         btt_policias.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btt_policias.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btt_policias.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/policia_icono.png"))); // NOI18N
+        btt_policias.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/policia_icono_grande.png"))); // NOI18N
+        btt_policias.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/policia_icono_grande.png"))); // NOI18N
         btt_policias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btt_policiasActionPerformed(evt);
@@ -191,6 +198,18 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        textoPolicias.setFont(new java.awt.Font("Tunga", 1, 21)); // NOI18N
+        textoPolicias.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        textoPolicias.setText("Policias");
+
+        textoListar.setFont(new java.awt.Font("Tunga", 1, 21)); // NOI18N
+        textoListar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        textoListar.setText("Listar Multas");
+
+        textoMultas.setFont(new java.awt.Font("Tunga", 1, 21)); // NOI18N
+        textoMultas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        textoMultas.setText("Insertar Multa");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -201,8 +220,9 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btt_lista, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btt_multas, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btt_multas, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textoMultas)
+                            .addComponent(textoListar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 491, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(reloj, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -217,6 +237,15 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btt_policias, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btt_lista, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(textoPolicias)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,23 +255,27 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
-                        .addComponent(btt_multas, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(14, 14, 14)
+                        .addComponent(btt_multas, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(textoMultas, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(BotonCargarPolicias)
                         .addComponent(BotonBorrar))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(79, 79, 79)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addComponent(btt_policias, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(textoPolicias, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addComponent(btt_lista, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(reloj, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(84, 84, 84)
-                        .addComponent(btt_lista, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24))))
+                    .addComponent(reloj, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textoListar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         pack();
@@ -337,5 +370,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel reloj;
+    private javax.swing.JLabel textoListar;
+    private javax.swing.JLabel textoMultas;
+    private javax.swing.JLabel textoPolicias;
     // End of variables declaration//GEN-END:variables
 }

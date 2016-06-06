@@ -6,7 +6,11 @@ import java.sql.Timestamp;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import modelo.Multa;
 import modelo.MultaTipo;
@@ -33,6 +37,14 @@ public class MultasIntroducir extends javax.swing.JDialog {
         //Carga de Datos
         int id = Integer.parseInt(jd_multas.recogerUltimaMulta()) + 1;
         multaID.setText(Integer.toString(id));
+
+        //Poner Imagen de fondo en JFrame
+        ((JPanel) getContentPane()).setOpaque(false);
+        ImageIcon MyImgCustom = new ImageIcon(this.getClass().getResource("/imagenes/fondo_multas.png"));
+        JLabel fondo = new JLabel();
+        fondo.setIcon(MyImgCustom);
+        getLayeredPane().add(fondo, JLayeredPane.FRAME_CONTENT_LAYER);
+        fondo.setBounds(0, 0, MyImgCustom.getIconWidth(), MyImgCustom.getIconHeight());
 
         try {
             for (MultaTipo mt : jd_multas.recogerMultasTipo()) {
@@ -80,12 +92,16 @@ public class MultasIntroducir extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText(" Policía");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("Policía");
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Descripción");
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Fecha");
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("Importe");
 
         InsertarMulta.setText("Insertar Multa");
@@ -95,8 +111,10 @@ public class MultasIntroducir extends javax.swing.JDialog {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("NIF Infractor");
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setText("Tipo Multa");
 
         jScrollPane1.setViewportView(PoliciaList);
@@ -147,14 +165,15 @@ public class MultasIntroducir extends javax.swing.JDialog {
                             .addComponent(TipoCombox, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(nifFormatted, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel1))
-                                .addGap(41, 41, 41)
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(FechaChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(34, 34, 34))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -162,16 +181,15 @@ public class MultasIntroducir extends javax.swing.JDialog {
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(multaID, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(216, 216, 216))
+                .addGap(185, 185, 185))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(multaID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE))
-                .addGap(18, 24, Short.MAX_VALUE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,7 +220,7 @@ public class MultasIntroducir extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(InsertarMulta)))
-                .addGap(38, 38, 38))
+                .addGap(18, 18, 18))
         );
 
         pack();
@@ -240,19 +258,19 @@ public class MultasIntroducir extends javax.swing.JDialog {
 
             mt = (MultaTipo) TipoCombox.getSelectedItem();
             idTipo = mt.getId();
-            
+
             //Creación de objetos e insertar datos
             Multa m = new Multa(descripcion, fecha_sql, importe, idPolicia, nifInfractor, idTipo);
 
             jd_multas.introducirMulta(m);
             JOptionPane.showMessageDialog(this, "La Multa ha sido insertada Correctamente.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
-            
+
             idMulta = Integer.parseInt(multaID.getText()) + 1;
             multaID.setText(Integer.toString(idMulta));
         } catch (SQLException | NullPointerException ex) {
             JOptionPane.showMessageDialog(this, "No se ha podido insertar la multa correctamente.\nHay campos vacios o incorrectos.\nError: " + ex, "Error", JOptionPane.ERROR_MESSAGE);
         }
-        
+
         //Comprobación de campos
         if (DescripcionField.getText().isEmpty()) {
             DescripcionField.setBorder(new LineBorder(java.awt.Color.RED));
