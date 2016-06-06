@@ -238,7 +238,7 @@ public class PoliciasMantenimiento extends javax.swing.JDialog {
         // TODO add your handling code here:
 
         if (accion == 1) {
-            Policia pActualizado = new Policia(Integer.parseInt(FieldIDPolicia.getText()), FieldNombre.getText(), FieldNPlaca.getText(), SliderEdad.getValue(), FieldDepartamento.getText(), this.rutaFoto);
+            Policia pActualizado = new Policia(Integer.parseInt(FieldIDPolicia.getText()), FieldNombre.getText(), FieldNPlaca.getText(), Integer.parseInt(LabelEdad.getText()), FieldDepartamento.getText(), this.rutaFoto);
             try {
                 if (jd_policias.ActualizarPolicias(pActualizado) == 1) {
                     JOptionPane.showMessageDialog(this, "Se ha modificado correctamente el policia.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
@@ -250,7 +250,7 @@ public class PoliciasMantenimiento extends javax.swing.JDialog {
         } else {
 
             try {
-                Policia pInsertar = new Policia(Integer.parseInt(FieldIDPolicia.getText()), FieldNombre.getText(), FieldNPlaca.getText(), SliderEdad.getValue(), FieldDepartamento.getText(), this.rutaFoto);
+                Policia pInsertar = new Policia(Integer.parseInt(FieldIDPolicia.getText()), FieldNombre.getText(), FieldNPlaca.getText(), Integer.parseInt(LabelEdad.getText()),FieldDepartamento.getText(), this.rutaFoto);
 
                 try {
                     if (jd_policias.InsertarPolicias(pInsertar) == 1) {
