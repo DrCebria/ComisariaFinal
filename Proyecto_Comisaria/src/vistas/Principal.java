@@ -334,7 +334,9 @@ public class Principal extends javax.swing.JFrame {
 
     private void BotonCargarPoliciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCargarPoliciasActionPerformed
 //         Cargar un archivo txt para introducirlo en la base de datos y posterior carga en la tabla de la pantalla principal
-        JFileChooser fc = new JFileChooser("C:\\Users\\Gerard\\Documents\\NetBeansProjects\\Comisaria\\Proyecto_Comisaria");
+        JFileChooser fc = new JFileChooser();
+        File workingDirectory = new File(System.getProperty("user.dir"));
+        fc.setCurrentDirectory(workingDirectory);
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de texto", "txt");
         String mensaje;
         fc.setFileFilter(filter);
