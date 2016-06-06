@@ -6,20 +6,17 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import modelo.Multa;
-import modelo.MultaTipo;
 import modelo.Policia;
 
 public class MultasListado extends javax.swing.JDialog {
@@ -200,7 +197,7 @@ public class MultasListado extends javax.swing.JDialog {
                 br.flush();
                 br.close();
             } catch (IOException ex) {
-                Logger.getLogger(MultasListado.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, "Error: " + ex, "Error", JOptionPane.ERROR_MESSAGE);
             }
 
         }

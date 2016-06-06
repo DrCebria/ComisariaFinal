@@ -3,8 +3,6 @@ package vistas;
 import datos.JDBCDAO;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -58,7 +56,7 @@ public class MultasIntroducir extends javax.swing.JDialog {
             this.PoliciaList.setModel(modelo);
 
         } catch (SQLException ex) {
-            Logger.getLogger(MultasIntroducir.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error de carga: " + ex, "Error", JOptionPane.ERROR_MESSAGE);
         }
 
     }
@@ -301,7 +299,7 @@ public class MultasIntroducir extends javax.swing.JDialog {
                 }
             }
         } catch (SQLException ex) {
-            Logger.getLogger(MultasIntroducir.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Error: " + ex, "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_TipoComboxItemStateChanged
 

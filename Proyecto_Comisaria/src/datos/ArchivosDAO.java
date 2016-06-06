@@ -1,25 +1,17 @@
 package datos;
 
-import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import modelo.Policia;
 
 public class ArchivosDAO {
-    
+
     public String cargarPolicias(File archivo) {
-        int contador_no = 0,contador = 0;
+        int contador_no = 0, contador = 0;
         JDBCDAO jd = new JDBCDAO();
         String datos, nombre, numPlaca, departamento, foto;
         String text, nombres = "";
@@ -48,9 +40,9 @@ public class ArchivosDAO {
                 }
             }
         } catch (IOException ex) {
-            Logger.getLogger(ArchivosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Error: " + ex, "Error", JOptionPane.ERROR_MESSAGE);
         }
-        
+
         if (contador_no == 0) {
             text = "No se han insertado policías.";
         } else if (contador_no == 1) {
@@ -59,9 +51,8 @@ public class ArchivosDAO {
             text = "Número de policias insertados: " + contador + "\nLos policías " + nombres + " ya estaban insertados."
                     + "\n" + "No se han insertado un total de " + contador_no + " policías.";
         }
-        
+
         return text;
     }
-    
-    
+
 }
