@@ -191,6 +191,7 @@ public class JDBCDAO {
                 + "VALUES (?,?,?,?,?,?)";
         ps = conexion.prepareStatement(insert);
         ps.setInt(1, p.getIdPolicia());
+       
         ps.setString(2, p.getNombre());
         ps.setString(3, p.getNumPlaca());
         ps.setInt(4, p.getEdad());
