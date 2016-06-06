@@ -130,8 +130,11 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        btt_multas.setText("Multas");
+        btt_multas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono_multa_grande.png"))); // NOI18N
         btt_multas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btt_multas.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono_multa.png"))); // NOI18N
+        btt_multas.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono_multa_grande.png"))); // NOI18N
+        btt_multas.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icono_multa_grande.png"))); // NOI18N
         btt_multas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btt_multasActionPerformed(evt);
@@ -141,7 +144,7 @@ public class Principal extends javax.swing.JFrame {
         btt_policias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/policia_icono_grande.png"))); // NOI18N
         btt_policias.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btt_policias.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btt_policias.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/policia_icono.png"))); // NOI18N
+        btt_policias.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/policia_icono.png"))); // NOI18N
         btt_policias.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/policia_icono_grande.png"))); // NOI18N
         btt_policias.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/policia_icono_grande.png"))); // NOI18N
         btt_policias.addActionListener(new java.awt.event.ActionListener() {
@@ -150,8 +153,12 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        btt_lista.setText("Lista Multas");
+        btt_lista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/multa_icono_grande.png"))); // NOI18N
         btt_lista.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btt_lista.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btt_lista.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/multa_icono.png"))); // NOI18N
+        btt_lista.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/multa_icono.png"))); // NOI18N
+        btt_lista.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/multa_icono.png"))); // NOI18N
         btt_lista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btt_listaActionPerformed(evt);
@@ -256,16 +263,16 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(btt_multas, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(textoMultas, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(11, 11, 11)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(BotonCargarPolicias)
                         .addComponent(BotonBorrar))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                .addComponent(btt_policias, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btt_policias, javax.swing.GroupLayout.PREFERRED_SIZE, 91, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(textoPolicias, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
